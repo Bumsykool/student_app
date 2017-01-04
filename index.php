@@ -29,9 +29,7 @@ require 'db/connect.php';
 <div class="container">
   <div class="jumbotron">
     <h1>Student Record App</h1> 
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
-    responsive, mobile-first projects on the web.</p> 
-  </div>
+      </div>
 
 
   <form action="welcome.php" method="post">

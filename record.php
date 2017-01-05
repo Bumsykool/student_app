@@ -23,7 +23,43 @@ require 'db/connect.php';
 
 </head>
 
+<div class="container">
+	<div class="jumbotron">   
 
+		<?php
+
+
+$id = $_GET['user_id'];
+
+
+
+if ($result = $db->query("SELECT * FROM students")){
+		if($count = $result->num_rows){
+
+		echo '<p>' ,$count  ,'</p>'; 
+		$rows = $result->fetch_all(MYSQLI_ASSOC);
+    
+
+    foreach ($rows  as $row ) {
+    	echo $row ["first_name"] , ' ' ,
+    		$row ["last_name"], ' ' ,
+    		$row ["reg_num"], ' ' ,
+    		$row ["class"], ' ' ,
+    		$row ["birth_date"]	,'<br>'			;
+    }
+		echo '<pre>' , print_r($rows), '</pre>' ;
+
+	}
+}
+
+?>
+
+
+
+
+	  </div>
+
+</div>
 
 
 

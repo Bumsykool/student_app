@@ -1,9 +1,32 @@
 
 <?php
- error_reporting(0);
+ //error_reporting(0);
 require 'db/connect.php';
 ?>
 
+
+  <?php 
+
+
+     $first_name = trim($_POST['first_name']);
+     $last_name = trim($_POST['last_name']);
+     $reg_number = trim($_POST['reg_number']);
+     $class =trim( $_POST['class']);
+     $birth_date= trim($_POST['birth_date']);  
+
+
+
+mysqli_query($db,"INSERT INTO students (first_name,last_name,reg_number,class,birth_date)
+            VALUES ('$first_name','$last_name','$reg_number','$class','$birth_date')");
+        
+  if(mysqli_affected_rows($db) > 0){
+  echo "<p>student Added</p>";
+} else {
+  echo "student NOT Added<br />";
+  echo mysqli_error ($db);
+}
+
+?>
 
 
 
@@ -29,28 +52,7 @@ require 'db/connect.php';
 <div class="container">
 
 
-<?php 
 
-		
-
-		 if(isset($_POST['first_name'])) {
-
-
-		 $first_name = trim($_POST['first_name']);
-		 $last_name = trim($_POST['last_name']);
-		 $reg_number = trim($_POST['reg_number']);
-		 $class =trim( $_POST['class']);
-		 $birth_date= trim($_POST['birth_date']);  
-
-
-		 if($insert = $db->query("INSERT INTO students 
-		 	(first_name, last_name, reg_number, class, birth_date)
-		VALUES ('{$first_name}','{$last_name}',{$reg_number}, {$class}, {$birth_date} )")) {
-
-		 	echo $db->affected_rows;
-		 }
-		}
-?>  
 
 
 <h5>Your records has being succesfully saved</h5>
@@ -89,9 +91,14 @@ Welcome  <?php echo $_POST['first_name']; ?>
   </table>
 </div>
 
-<h5>Are your records Accurate ? if yes, Then proceed to our  <a href='home.html' id ="home">site</a> </h5><br>
-	<h6><bold>OR</bold></h6>
-	<h5><a href="index.php">Edit your record</a></h5>
+<h5>Proceed to view <a href='record.php' id ="record">student records</a> </h5><br>
+
+
+	
+<!--	<h5><a href="update.php">Edit your record</a></h5><br>
+  <h5><a href='list.php?id=$user_id'>Delete your record</a></h5> -->
 </body>
 </html>
+
+
 

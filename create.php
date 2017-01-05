@@ -1,44 +1,34 @@
 <?php
- error_reporting(0);
+ //error_reporting(0);
 require 'db/connect.php';
 ?>
 
+
 <?php 
 
-		
 
-		 if(isset($_POST['first_name'])) {
-
-
-		 		$first_name = trim($_POST['first_name']);
-		 $last_name = trim($_POST['last_name']);
-		 $reg_number = trim($_POST['reg_number']);
-		 $class =trim( $_POST['class']);
-		 $birth_date= trim($_POST['birth_date']);  
+     $first_name = trim($_POST['first_name']);
+     $last_name = trim($_POST['last_name']);
+     $reg_number = trim($_POST['reg_number']);
+     $class =trim( $_POST['class']);
+     $birth_date= trim($_POST['birth_date']);  
 
 
-		 if($insert = $db->query("INSERT INTO students 
-		 	(first_name, last_name, reg_number, class, birth_date)
-		VALUES ('{$first_name}','{$last_name}',{$reg_number}, {$class}, {$birth_date} )")) {
 
-		 	echo $db->affected_rows;
-		 }
+mysqli_query($db,"INSERT INTO students (first_name,last_name,reg_number,class,birth_date)
+            VALUES ('$first_name','$last_name','$reg_number','$class','$birth_date')");
+        
+  if(mysqli_affected_rows($db) > 0){
+  echo "<p>student Added</p>";
+} else {
+  echo "student NOT Added<br />";
+  echo mysqli_error ($db);
+  
+}
 
-	}
-		 
-/*
-		 if (mysql_query($insert, $db)) {
-		 	//success!
-		 	header("location:welcome.php");
-		exit;
-		 }
-
-		 else {
-		 	echo "<p> subject creation failed.</p>";
-		 	echo "<p>" . mysql_error() . "</p>";
-		 }  */
-		
+header("Location: welcome.php");
 ?>
+
 
 
 <?php mysql_close($db); ?>

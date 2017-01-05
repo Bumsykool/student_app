@@ -1,6 +1,6 @@
 
 <?php
-//  error_reporting(0);
+  error_reporting(0);
 
 
 require 'db/connect.php';
@@ -51,7 +51,7 @@ require 'db/connect.php';
   </div>
   <div class="form-group">
     <label for="birth_date">Date of Birth:</label>
-    <input type="text" class="form-control" id="birth_date" name="birth_date">
+    <input type="date" class="form-control" id="birth_date" name="birth_date">
   </div>
    <button type="submit" class="btn btn-default">Submit</button>
 </form>

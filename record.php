@@ -26,89 +26,59 @@ require 'db/connect.php';
 <div class="container">
 	<div class="jumbotron"> 
 
-	<table class="table">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Reg no</th>
-        <th>Classes</th>
-        <th>Date of Birth</th>
-      </tr>
-    </thead>	  
-
+	
 		<?php
 
-
-$id = $_GET['user_id'];
-
-'<table class="table">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Reg no</th>
-        <th>Classes</th>
-        <th>Date of Birth</th>
-      </tr>
-    </thead>' ;	
-
+//to chech d content of db
 
 if ($result = $db->query("SELECT * FROM students")){
 		if($count = $result->num_rows){
 
-		echo '<p>' ,$count  ,'</p>'; 
+		//echo '<p>'  ,$count  , '</p>'; 
 		$rows = $result->fetch_all(MYSQLI_ASSOC); 
 
-foreach ($rows  as $row ) {
-		 
-
-    	
-    	echo $row ["first_name"] , ' ' ,
-    		$row ["last_name"], ' ' ,
-    		$row ["reg_num"], ' ' ,
-    		$row ["class"], ' ' ,
-    		$row ["birth_date"]	,
-
-    		//'<h5>''<a href="update.php">'Edit your record'</a>''</h5>' , '   ',
-// ' <h5><a href='list.php?id=$user_id'>Delete your record</a></h5> '
-          
-    		'<br>'			;
     }
 		//echo '<pre>' , print_r($rows), '</pre>' ;
 
 	}
-}
+
 
 ?>
+<p><h5>There are <b> <?php echo $count; ?> </b>records</h5></p>
+
 <table class="table">
-    <thead>
+   <thead>
+   <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Reg number</th>
+    <th>Class</th>
+    <th>Date of Birth</th>
+    <th>Action</th>
+    <tr>
+   <thead>
+   <tbody>
+
+       <?php foreach($rows  as $row ){ 
+
+        ?>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Reg no</th>
-        <th>Classes</th>
-        <th>Date of Birth</th>
+        <td><?php echo $row ["first_name"]; ?><td>
+      <td><?php echo $row ["last_name"]?><td>
+      <td><?php echo $row ["reg_num"] ?><td>
+        <td><?php echo $row ["class"] ?><td>
+          <td><?php echo $row ["birth_date"] ?><td>
+      <td><a href="update.php?id=<?php $res['id'] ?>">Edit</a>|<a href="delete.php?id=<?php $res['id'] ?>">Del</a><td>
       </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><?php echo $row ["first_name"];?></td>
-        <td><?php echo $row ["last_name"];?></td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
+      <?php } ?>
+   <tbody>
+</table>                        
+
+
+
+
+
+
 
 
 

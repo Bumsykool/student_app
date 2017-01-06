@@ -24,36 +24,91 @@ require 'db/connect.php';
 </head>
 
 <div class="container">
-	<div class="jumbotron">   
+	<div class="jumbotron"> 
+
+	<table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Reg no</th>
+        <th>Classes</th>
+        <th>Date of Birth</th>
+      </tr>
+    </thead>	  
 
 		<?php
 
 
 $id = $_GET['user_id'];
 
+'<table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Reg no</th>
+        <th>Classes</th>
+        <th>Date of Birth</th>
+      </tr>
+    </thead>' ;	
 
 
 if ($result = $db->query("SELECT * FROM students")){
 		if($count = $result->num_rows){
 
 		echo '<p>' ,$count  ,'</p>'; 
-		$rows = $result->fetch_all(MYSQLI_ASSOC);
-    
+		$rows = $result->fetch_all(MYSQLI_ASSOC); 
 
-    foreach ($rows  as $row ) {
+foreach ($rows  as $row ) {
+		 
+
+    	
     	echo $row ["first_name"] , ' ' ,
     		$row ["last_name"], ' ' ,
     		$row ["reg_num"], ' ' ,
     		$row ["class"], ' ' ,
-    		$row ["birth_date"]	,'<br>'			;
+    		$row ["birth_date"]	,
+
+    		//'<h5>''<a href="update.php">'Edit your record'</a>''</h5>' , '   ',
+// ' <h5><a href='list.php?id=$user_id'>Delete your record</a></h5> '
+          
+    		'<br>'			;
     }
-		echo '<pre>' , print_r($rows), '</pre>' ;
+		//echo '<pre>' , print_r($rows), '</pre>' ;
 
 	}
 }
 
 ?>
-
+<table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Reg no</th>
+        <th>Classes</th>
+        <th>Date of Birth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><?php echo $row ["first_name"];?></td>
+        <td><?php echo $row ["last_name"];?></td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
 
 
 

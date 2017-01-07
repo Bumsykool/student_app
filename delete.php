@@ -8,7 +8,7 @@ require 'db/connect.php';
 
 
 
-
+$id = $_GET['id'];
 
 
   if ($result = $db->query("SELECT * FROM students")){
@@ -18,7 +18,7 @@ require 'db/connect.php';
 
     foreach ($rows  as $row ) {
     	//echo $row [id];
-    	$id = $_GET['id'];
+    	
     }
 		//echo '<pre>' , print_r($rows), '</pre>' ;
 }
@@ -33,5 +33,5 @@ if (mysqli_query($db, $delete)) {
 } else {
     echo "Error deleting record: " . mysqli_error($db);
 }
-
+header("Location: record.php");
 ?>

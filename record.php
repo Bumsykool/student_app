@@ -1,7 +1,5 @@
 <?php
   error_reporting(0);
-
-
 require 'db/connect.php';
 ?>
 
@@ -24,25 +22,18 @@ require 'db/connect.php';
 </head>
 
 <div class="container">
-	<div class="jumbotron"> 
+  <div class="jumbotron"> 
 
-	
-		<?php
-
+  
+    <?php
 //to chech d content of db
-
 if ($result = $db->query("SELECT * FROM students")){
-		if($count = $result->num_rows){
-
-		//echo '<p>'  ,$count  , '</p>'; 
-		$rows = $result->fetch_all(MYSQLI_ASSOC); 
-
+    if($count = $result->num_rows){
+    //echo '<p>'  ,$count  , '</p>'; 
+    $rows = $result->fetch_all(MYSQLI_ASSOC); 
     }
-		//echo '<pre>' , print_r($rows), '</pre>' ;
-
-	}
-
-
+    //echo '<pre>' , print_r($rows), '</pre>' ;
+  }
 ?>
 <p><h5>There are <b> <?php echo $count; ?> </b>records</h5></p>
 
@@ -56,22 +47,21 @@ if ($result = $db->query("SELECT * FROM students")){
     <th>Date of Birth</th>
     <th>Action</th>
     <tr>
-   <thead>
+   </thead>
    <tbody>
 
        <?php foreach($rows  as $row ){ 
-
         ?>
       <tr>
-        <td><?php echo $row ["first_name"]; ?><td>
-      <td><?php echo $row ["last_name"]?><td>
-      <td><?php echo $row ["reg_num"] ?><td>
-        <td><?php echo $row ["class"] ?><td>
-          <td><?php echo $row ["birth_date"] ?><td>
-      <td><a href="update.php?id=<?php $res['id'] ?>">Edit</a>|<a href="delete.php?id=<?php $res['id'] ?>">Del</a><td>
+        <td><?php echo $row ["first_name"]; ?></td>
+      <td><?php echo $row ["last_name"]?></td>
+      <td><?php echo $row ["reg_num"] ?></td>
+        <td><?php echo $row ["class"] ?></td>
+          <td><?php echo $row ["birth_date"] ?></td>
+      <td><a href="update.php?id=<?php echo $row['id'] ?>">Edit</a>|<a href="delete.php?id=<?php echo $row['id'] ?>">Del</a></td>
       </tr>
       <?php } ?>
-   <tbody>
+   </tbody>
 </table>                        
 
 
@@ -82,7 +72,7 @@ if ($result = $db->query("SELECT * FROM students")){
 
 
 
-	  </div>
+    </div>
 
 </div>
 

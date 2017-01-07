@@ -12,15 +12,16 @@ require 'db/connect.php';
      $last_name = trim($_POST['last_name']);
      $reg_number = trim($_POST['reg_number']);
      $class =trim( $_POST['class']);
-     $birth_date= trim($_POST['birth_date']);  
+     $created_at = date('Y-m-d');
+     $created_at= trim($_POST['birth_date']);  
 
 
 
 mysqli_query($db,"INSERT INTO students (first_name,last_name,reg_number,class,birth_date)
-            VALUES ('$first_name','$last_name','$reg_number','$class','$birth_date')");
+            VALUES ('$first_name','$last_name','$reg_number','$class','$created_at')");
         
   if(mysqli_affected_rows($db) > 0){
-  echo "<p>student Added</p>";
+  echo "<p>Your records has being succesfully saved</p>";
 } else {
   echo "student NOT Added<br />";
   echo mysqli_error ($db);
@@ -55,8 +56,8 @@ mysqli_query($db,"INSERT INTO students (first_name,last_name,reg_number,class,bi
 
 
 
-<h5>Your records has being succesfully saved</h5>
-Welcome  <?php echo $_POST['first_name']; ?>  
+
+Welcome  <?php echo $_POST['first_name'];      ?>  
 
 
 <table class="table-striped">
@@ -85,7 +86,7 @@ Welcome  <?php echo $_POST['first_name']; ?>
        </tr>
         <tr>
          <td> Date of Birth: </td>
-         <td> <?php echo $_POST['birth_date'];  ?> </td>
+         <td> <?php echo $created_at; ?> </td>
        </tr>
     </tbody>
   </table>

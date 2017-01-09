@@ -1,24 +1,19 @@
 <?php
   error_reporting(0);
-
-
 require 'db/connect.php';
 ?>
-<?php
 
+<?php
 $id = $_GET['id'];
 
-
   if ($result = $db->query("SELECT * FROM students")){
-    
+
     $rows = $result->fetch_all(MYSQLI_ASSOC);
-    
 
     foreach ($rows  as $row ) {
      echo $row ['first_name'];}
     //echo '<pre>' , print_r($rows), '</pre>' ;
 }
-  
 
 ?>
 
@@ -45,7 +40,7 @@ $id = $_GET['id'];
 
 <div class="container">
   <div class="jumbotron">
-    <h1>Student Record App</h1> 
+    <h1>Student Record App</h1>
       </div>
 
 
@@ -74,6 +69,3 @@ $id = $_GET['id'];
    <button type="submit" class="btn btn-default">Submit</button>
 </form>
  </div>
-
-
-

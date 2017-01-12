@@ -32,6 +32,7 @@ $id = $_GET['id'];
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 
@@ -45,28 +46,41 @@ $id = $_GET['id'];
       </div>
 
 
-  <form action="edit.php?id='$id'" method="post" >
-  <div class="form-group">
+  <form action="edit.php?id= <?php echo $row['id'] ?>" method="post" >
+  <div class="form-group col-xs-8">
 
     <label for="first_name">First Name:</label>
     <input type="text" value="<?php echo $row ['first_name'];?>" class="form-control" id="first_name" name="first_name">
   </div>
-  <div class="form-group">
+  <div class="form-group col-xs-8">
     <label for="last_name">Last Name:</label>
     <input type="text" value="<?php echo $row ['last_name'];?>" class="form-control" id="last_name" name="last_name">
   </div>
-  <div class="form-group">
+  <div class="form-group col-xs-8">
     <label for="reg_number">Reg no:</label>
     <input type="text" value="<?php echo $row ['reg_number'];?>" class="form-control" id="reg_number" name="reg_number">
   </div>
-  <div class="form-group">
+  <div class="form-group col-xs-8">
     <label for="class">Class:</label>
     <input type="integer" value="<?php echo $row ['class'];?>" class="form-control" id="class" name="class">
   </div>
-  <div class="form-group">
+  <div class="form-group col-xs-8">
     <label for="birth_date">Date of Birth:</label>
     <input type="date" value="<?php echo $row ['birth_date'];?>" class="form-control" id="birth_date" name="birth_date">
   </div>
-   <button type="submit" class="btn btn-default">Update</button>
-</form>
+  <div id="float">
+   <button type="submit" class="btn btn-success" >Update</button>
  </div>
+</form>
+
+<div id="space"></div>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width:80%">
+    80%
+  </div>
+ </div>
+
+
+</body>
+</html>

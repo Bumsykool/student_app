@@ -11,20 +11,6 @@ require 'db/connect.php';
 $id = $_GET['id'];
 
 
-  if ($result = $db->query("SELECT * FROM students")){
-		
-		$rows = $result->fetch_all(MYSQLI_ASSOC);
-    
-
-    foreach ($rows  as $row ) {
-    	//echo $row [id];
-    	
-    }
-		//echo '<pre>' , print_r($rows), '</pre>' ;
-}
-	
-
-
   $delete = "DELETE FROM students WHERE id=$id";
 
 if (mysqli_query($db, $delete)) {

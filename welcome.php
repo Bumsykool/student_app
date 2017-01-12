@@ -46,11 +46,13 @@ mysqli_query($db,"INSERT INTO students (first_name,last_name,reg_number,class,bi
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="container" id="welcome">
 
 
 
@@ -60,7 +62,7 @@ mysqli_query($db,"INSERT INTO students (first_name,last_name,reg_number,class,bi
 Welcome  <?php echo $_POST['first_name'];      ?>  
 
 
-<table class="table-striped">
+<table class="table-bordered" id="table">
     <thead>
       <tr>
         <th>Your Record</th>
@@ -96,8 +98,11 @@ Welcome  <?php echo $_POST['first_name'];      ?>
 
 
 	
-<!--	<h5><a href="update.php">Edit your record</a></h5><br>
-  <h5><a href='list.php?id=$user_id'>Delete your record</a></h5> -->
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
+    60%
+  </div>
 </body>
 </html>
 

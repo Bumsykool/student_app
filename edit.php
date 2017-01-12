@@ -25,12 +25,12 @@ require 'db/connect.php';
             WHERE id = $id";
 if (mysqli_query($db, $update)) {
     echo "Record updated successfully";
+    header("Location: record.php");
+
 } else {
     echo "Error updating record: " . mysqli_error($db);
 }
-//header("Location: record.php");
 
 
 ?>
 
-<a href="record.php">site</a>

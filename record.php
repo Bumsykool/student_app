@@ -22,6 +22,7 @@ require 'db/connect.php';
 </head>
 
 <div class="container">
+  
   <div class="jumbotron"> 
 
   
@@ -55,7 +56,7 @@ if ($result = $db->query("SELECT * FROM students")){
       <tr>
         <td><?php echo $row ["first_name"]; ?></td>
       <td><?php echo $row ["last_name"]?></td>
-      <td><?php echo $row ["reg_num"] ?></td>
+      <td><?php echo $row ["reg_number"] ?></td>
         <td><?php echo $row ["class"] ?></td>
           <td><?php echo $row ["birth_date"] ?></td>
       <td><a href="update.php?id=<?php echo $row['id'] ?>">Edit</a>|<a href="delete.php?id=<?php echo $row['id'] ?>">Del</a></td>
@@ -68,7 +69,11 @@ if ($result = $db->query("SELECT * FROM students")){
 
 
 
-
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+    100%
+  </div>
 
 
 

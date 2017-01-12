@@ -1,0 +1,21 @@
+
+.jumbotron {
+    background-color: #f4511e;
+    color: #fff;
+    padding: 100px 25px;
+}
+
+.container {
+    padding: 80px 80px ;
+    background-color: gray;
+    margin: 80px 80px 80px 100px;
+    border-radius: 50px;
+}
+
+#float {clear: both;}
+
+#space {height: 30px;}
+
+#welcome {background-color: silver;}
+
+#table {margin: 30px; }

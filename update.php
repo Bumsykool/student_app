@@ -1,25 +1,21 @@
 <?php
   error_reporting(0);
-
-
 require 'db/connect.php';
 ?>
 <?php
-
 $id = $_GET['id'];
 
-
-  if ($result = $db->query("SELECT * FROM students")){
+  if ($result = $db->query("SELECT * FROM students
+    WHERE id=$id " )){
     
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     
-
     foreach ($rows  as $row ) {
-     echo $row ['first_name'];}
+     //echo $row ['first_name'];
+    }
     //echo '<pre>' , print_r($rows), '</pre>' ;
 }
   
-
 ?>
 
 <!DOCTYPE html>
@@ -49,31 +45,28 @@ $id = $_GET['id'];
       </div>
 
 
-  <form action="edit.php" method="post">
+  <form action="edit.php?id='$id'" method="post" >
   <div class="form-group">
 
     <label for="first_name">First Name:</label>
-    <input type="text" value="<?php echo $row ['id'];?>" class="form-control" id="first_name" name="first_name">
+    <input type="text" value="<?php echo $row ['first_name'];?>" class="form-control" id="first_name" name="first_name">
   </div>
   <div class="form-group">
     <label for="last_name">Last Name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name">
+    <input type="text" value="<?php echo $row ['last_name'];?>" class="form-control" id="last_name" name="last_name">
   </div>
   <div class="form-group">
     <label for="reg_number">Reg no:</label>
-    <input type="text" class="form-control" id="reg_number" name="reg_number">
+    <input type="text" value="<?php echo $row ['reg_number'];?>" class="form-control" id="reg_number" name="reg_number">
   </div>
   <div class="form-group">
     <label for="class">Class:</label>
-    <input type="integer" class="form-control" id="class" name="class">
+    <input type="integer" value="<?php echo $row ['class'];?>" class="form-control" id="class" name="class">
   </div>
   <div class="form-group">
     <label for="birth_date">Date of Birth:</label>
-    <input type="date" class="form-control" id="birth_date" name="birth_date">
+    <input type="date" value="<?php echo $row ['birth_date'];?>" class="form-control" id="birth_date" name="birth_date">
   </div>
-   <button type="submit" class="btn btn-default">Submit</button>
+   <button type="submit" class="btn btn-default">Update</button>
 </form>
  </div>
-
-
-
